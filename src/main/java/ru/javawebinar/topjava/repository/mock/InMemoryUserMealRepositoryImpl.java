@@ -66,8 +66,7 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     @Override
     public Collection<UserMeal> getBetween(LocalDateTime startDataTime, LocalDateTime endDataTime, int userId) {
         return repository.get(userId).values().stream()
-                .filter(userMeal -> TimeUtil.isBetween(userMeal.getDateTime().toLocalTime(),
-                        startDataTime.toLocalTime(), endDataTime.toLocalTime()))
+                .filter(userMeal -> TimeUtil.isBetween(userMeal.getDateTime(), startDataTime, endDataTime))
                 .sorted((u1, u2) -> u2.getDateTime().compareTo(u1.getDateTime()))
                 .collect(Collectors.toList());
     }
