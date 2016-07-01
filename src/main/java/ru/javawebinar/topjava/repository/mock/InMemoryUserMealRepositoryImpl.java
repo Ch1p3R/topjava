@@ -8,12 +8,14 @@ import ru.javawebinar.topjava.util.TimeUtil;
 import ru.javawebinar.topjava.util.UserMealsUtil;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+
 
 /**
  * GKislin
@@ -23,6 +25,12 @@ import java.util.stream.Collectors;
 public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     private Map<Integer, Map<Integer, UserMeal>> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
+
+    {
+        UserMealsUtil.MEAL_LIST.forEach(um -> save(1, um));
+        save(2, new UserMeal(LocalDateTime.of(2015, Month.JUNE, 1, 14, 0), "Админ ланч", 510));
+        save(2, new UserMeal(LocalDateTime.of(2015, Month.JUNE, 1, 21, 0), "Админ ужин", 1500));
+    }
     @Override
     public UserMeal save(int userId, UserMeal userMeal) {
         Objects.requireNonNull(userMeal);
