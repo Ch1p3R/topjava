@@ -32,6 +32,8 @@ public class JdbcUserRepositoryImpl implements UserRepository {
 
     private SimpleJdbcInsert insertUser;
 
+    public JdbcUserRepositoryImpl() {
+    }
     @Autowired
     public JdbcUserRepositoryImpl(DataSource dataSource) {
         this.insertUser = new SimpleJdbcInsert(dataSource)
