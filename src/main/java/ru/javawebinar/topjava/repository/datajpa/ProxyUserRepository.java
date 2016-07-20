@@ -24,7 +24,6 @@ public interface ProxyUserRepository extends JpaRepository<User, Integer> {
     int delete(@Param("id") int id);
 
     @Override
-    @Transactional
     User save(User user);
 
     @Override
