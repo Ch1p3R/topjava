@@ -29,6 +29,9 @@ public class UserMeal extends BaseEntity {
     public static final String ALL_SORTED = "UserMeal.getAll";
     public static final String DELETE = "UserMeal.delete";
     public static final String GET_BETWEEN = "UserMeal.getBetween";
+
+    @Column(name = "date_time", nullable = false)
+    @NotNull
     private LocalDateTime dateTime;
 
     @Column(name = "description", nullable = false)
@@ -39,8 +42,7 @@ public class UserMeal extends BaseEntity {
     @Range(min = 10, max = 5000)
     protected int calories;
 
-    @Column(name = "date_time", nullable = false)
-    @NotNull
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
