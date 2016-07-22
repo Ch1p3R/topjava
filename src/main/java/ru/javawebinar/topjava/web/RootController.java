@@ -1,12 +1,17 @@
 package ru.javawebinar.topjava.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.javawebinar.topjava.AuthorizedUser;
+import ru.javawebinar.topjava.service.UserMealService;
 import ru.javawebinar.topjava.service.UserService;
+import ru.javawebinar.topjava.to.UserMealWithExceed;
+import ru.javawebinar.topjava.util.UserMealsUtil;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 public class RootController {
     @Autowired
     private UserService service;
+
+    @Autowired
+    private UserMealService userMealService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String root() {
@@ -36,4 +44,6 @@ public class RootController {
         AuthorizedUser.setId(userId);
         return "redirect:meals";
     }
+
+
 }

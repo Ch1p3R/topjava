@@ -28,7 +28,7 @@ public class MealServlet extends HttpServlet {
 
     private UserMealRestController mealController;
 
-    @Override
+    /*@Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         WebApplicationContext springContext = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
@@ -88,10 +88,7 @@ public class MealServlet extends HttpServlet {
         String value = request.getParameter(param);
         request.setAttribute(param, value);
         return value;
-    }
+    }*/
 
-    private int getId(HttpServletRequest request) {
-        String paramId = Objects.requireNonNull(request.getParameter("id"));
-        return Integer.valueOf(paramId);
-    }
+
 }
