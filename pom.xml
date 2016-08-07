@@ -16,9 +16,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
         <tomcat.version>8.0.33</tomcat.version>
-        <spring.version>4.2.6.RELEASE</spring.version>
+
+        <!--http://stackoverflow.com/questions/37651837/integrate-hibernate-5-2-with-spring-framework-4-x        -->
+        <spring.version>4.3.1.RELEASE</spring.version>
+        <spring-security.version>4.1.1.RELEASE</spring-security.version>
+        <spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
         <jackson-json.version>2.8.0</jackson-json.version>
 
         <!-- Logging -->
@@ -33,11 +36,20 @@
         <hamcrest.version>1.3</hamcrest.version>
 
         <!-- Hibernate -->
-        <hibernate.version>5.1.0.Final</hibernate.version>
+        <!--https://github.com/hibernate/hibernate-orm/wiki/Migration-Guide-&#45;&#45;5.2-->
+        <hibernate.version>5.2.1.Final</hibernate.version>
         <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
 
         <!--Tools-->
         <ehcache.version>2.10.2.2.21</ehcache.version>
+
+        <!--webjars-->
+        <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
+        <webjars-jquery.version>2.2.4</webjars-jquery.version>
+        <webjars-datetimepicker.version>2.4.7</webjars-datetimepicker.version>
+        <webjars-noty.version>2.3.8</webjars-noty.version>
+        <webjars-datatables.version>1.10.12</webjars-datatables.version>
+
     </properties>
 
     <build>
@@ -240,12 +252,7 @@
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-java8</artifactId>
+            <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
@@ -295,6 +302,44 @@
             <version>${jackson-json.version}</version>
         </dependency>
 
+        <!--security-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <!-- Webjars (static dependencies distributed as JAR files) -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${webjars-bootstrap.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${webjars-jquery.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>datetimepicker</artifactId>
+            <version>${webjars-datetimepicker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>noty</artifactId>
+            <version>${webjars-noty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>datatables</artifactId>
+            <version>${webjars-datatables.version}</version>
+        </dependency>
     </dependencies>
 
     <profiles>
