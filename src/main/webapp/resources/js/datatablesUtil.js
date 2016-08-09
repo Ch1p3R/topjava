@@ -38,6 +38,13 @@ function updateTable() {
         datatableApi.fnDraw();
     });
 }
+function updateTableByData(data) {
+    datatableApi.fnClearTable();
+    $.each(data, function (key, item) {
+        datatableApi.fnAddData(item)
+    });
+    datatableApi.fnDraw();
+}
 
 function save() {
     var form = $('#detailsForm');
